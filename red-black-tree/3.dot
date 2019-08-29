@@ -1,0 +1,9 @@
+digraph myGraph{
+1[color=black]
+0[color=black]
+2[color=black]
+3[color=red]
+1->0
+1->2
+2->3
+}
