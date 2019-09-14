@@ -18,8 +18,7 @@ public:
     double determinant(); //行列式
     Matrix inversion();   //求逆
 
-    inline auto &operator[](int index);
-    double operator()(int x, int y);
+    double &operator()(int x, int y);
     Matrix &operator=(const Matrix &);
     Matrix &operator+=(const Matrix &);
     Matrix &operator-=(const Matrix &);

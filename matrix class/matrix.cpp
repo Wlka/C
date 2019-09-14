@@ -152,13 +152,7 @@ Matrix Matrix::inversion()
     return res;
 }
 
-auto &Matrix::operator[](int index)
-{
-    //不判断是否越界
-    return mat[index];
-}
-
-double Matrix::operator()(int x, int y)
+double &Matrix::operator()(int x, int y)
 {
     if (x >= 0 && x < col && y >= 0 && y < row)
     {
@@ -377,10 +371,4 @@ istream &operator>>(istream &is, Matrix &m)
         }
     }
     return is;
-}
-
-int main()
-{
-    //you can test here
-    return 0;
 }
