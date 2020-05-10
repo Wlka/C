@@ -160,14 +160,6 @@ fourPara calcFourParameters(vector<Point2D> &p1, vector<Point2D> &p2)
     {
         throw "点数量太少，无法完成计算";
     }
-    else if (pointCount == 2)
-    {
-        double rotate = coordinateAzimuth(p2[0], p2[1]) - coordinateAzimuth(p1[0], p1[1]);
-        double scale = dist(p2[0], p2[1]) / dist(p1[0], p1[1]);
-        double dx = p2[0].X() - (1 + scale) * (cos(rotate) * p1[0].X() - sin(rotate) * p1[0].Y());
-        double dy = p2[0].Y() - (1 + scale) * (sin(rotate) * p1[0].X() + cos(rotate) * p1[0].Y());
-        return fourPara(rotate, scale, dx, dy);
-    }
     //平差求解
     double u = 1, v = 0, Dx = 0, Dy = 0;
     Matrix corrections(4, 1);
@@ -213,6 +205,7 @@ fourPara calcFourParameters(vector<Point2D> &p1, vector<Point2D> &p2)
     return fourPara(rotate, scale, dx, dy);
 }
 
+//Result in dx/dy/dz/scale are error
 sevenPara calcSevenParameters(vector<Point3D> &p1, vector<Point3D> &p2)
 {
     //七参数计算(XYZ坐标位移量{米}、XYZ旋转角度{弧度}、缩放尺度{无单位})
